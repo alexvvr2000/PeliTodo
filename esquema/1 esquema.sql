@@ -56,7 +56,7 @@ create table genero(
 create table rol_artista(
     id_rol int primary key autoincrement,
     descripcion varchar(50) not null,
-)
+);
 
 create table artista(
     id_artista int primary key autoincrement,
@@ -65,4 +65,17 @@ create table artista(
     edad int not null,
     fecha_nacimiento date null,
     fecha_deceso not null,
+);
+
+create table plataforma(
+    id_plataforma int primary key autoincrement,
+    nombre varchar(50) not null,
+    url varchar(2000) not null,
+);
+
+create table pelicula(
+    id_pelicula int primary key autoincrement,
+    fecha_estreno date not null,
+    id_pais char(2) null,
+    duracion int not null
 )
