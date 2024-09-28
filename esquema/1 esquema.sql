@@ -88,3 +88,27 @@ create table imagen_pelicula(
     descripcion varchar(50) not null,
     constraint fk_pelicula_imagen foreign key(id_pelicula) references pelicula(id_pelicula)
 );
+
+create table genero_pelicula(
+    id_pelicula int not null,
+    id_genero int not null,
+    constraint fk_pelicula_genero foreign key(id_pelicula) references pelicula(id_pelicula),
+    constraint fk_genero_pelicula foreign key(id_genero) references genero(id_genero),
+    constraint pk_genero_pelicula primary key(id_pelicula, id_genero)
+);
+
+create table plataforma_pelicula(
+    id_pelicula int not null,
+    id_plataforma int not null,
+    constraint fk_pelicula_plataforma foreign key(id_pelicula) references pelicula(id_pelicula),
+    constraint fk_plataforma_pelicula foreign key(id_plataforma) references plataforma(id_plataforma),
+    constraint pk_genero_pelicula primary key(id_pelicula, id_plataforma)
+);
+
+create table lenguaje_pelicula(
+    id_pelicula int not null,
+    id_lenguaje char(2) not null,
+    constraint fk_pelicula_lenguaje foreign key(id_pelicula) references pelicula(id_pelicula),
+    constraint fk_lenguaje_pelicula foreign key(id_lenguaje) references pelicula(id_lenguaje),
+    constraint pk_genero_pelicula primary key(id_pelicula, id_lenguaje)
+);
