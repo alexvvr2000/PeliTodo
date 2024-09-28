@@ -1,0 +1,30 @@
+services:
+  database:
+    build:
+      dockerfile: Dockerfile
+    environment:
+      - MYSQL_ROOT_PASSWORD_FILE=/run/secrets/root
+      - MYSQL_USER=admin_pelitodo
+      - MYSQL_PASSWORD_FILE=/run/secrets/usuario
+      - MYSQL_DATABASE=pelitodo
+    ports:
+      - '127.0.0.1:3306:3306'
+    volumes:
+      - pelitodo_data:/var/lib/mysql
+    secrets:
+      - root
+      - usuario
+
+secrets:
+  root:
+    file: ./root.txt
+  usuario:
+    file: ./pass.txt
+
+volumes:
+  pelitodo_data:
+    driver: local
+    driver_opts:
+      type: none
+      o: bind
+      device: ./mysql_data
