@@ -77,7 +77,8 @@ create table pelicula(
     id_pelicula int primary key autoincrement,
     fecha_estreno date not null,
     id_pais char(2) null,
-    duracion int not null
+    duracion int not null,
+    constraint fk_pais_pelicula foreign key(id_pais) references pais(id_pais)
 )
 
 create table imagen_pelicula(
