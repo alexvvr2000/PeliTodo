@@ -79,3 +79,11 @@ create table pelicula(
     id_pais char(2) null,
     duracion int not null
 )
+
+create table imagen_pelicula(
+    id_imagen_pelicula int primary key autoincrement,
+    id_pelicula int not null,
+    url_imagen varchar(2000) not null,
+    descripcion varchar(50) not null,
+    constraint fk_pelicula_imagen foreign key(id_pelicula) references pelicula(id_pelicula)
+);
