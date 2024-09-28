@@ -122,3 +122,20 @@ create table involucrado_pelicula(
     constraint fk_pelicula_involucrado foreign key(id_pelicula) references pelicula(id_pelicula),
     constraint pk_involucrados_pelicula primary key(id_artista, id_rol, id_pelicula)
 );
+
+create table estudio_pelicula(
+    id_estudio int not null,
+    id_pelicula int not null,
+    constraint fk_estudio_pelicula foreign key(id_estudio) references estudio(id_estudio),
+    constraint fk_pelicula_estudio foreign key(id_pelicula) references pelicula(id_pelicula),
+    constraint pk_estudio_pelicula primary key(id_estudio, id_pelicula)
+)
+
+create table titulo_pelicula(
+    id_pelicula int not null,
+    id_pais char(2) not null,
+    titulo_alternativo varchar(80) not null,
+    constraint fk_pelicula_titulo foreign key(id_pelicula) references pelicula(id_pelicula),
+    constraint fk_pais_titulo foreign key(id_pais) references pais(id_pais),
+    constraint pk_estudio_pelicula primary key(id_pais, id_pelicula)
+);
