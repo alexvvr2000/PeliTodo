@@ -139,3 +139,18 @@ create table titulo_pelicula(
     constraint fk_pais_titulo foreign key(id_pais) references pais(id_pais),
     constraint pk_estudio_pelicula primary key(id_pais, id_pelicula)
 );
+
+create table lista_usuario(
+    id_lista int primary key autoincrement,
+    id_usuario int not null,
+    nombre_lista varchar(100) not null,
+    constraint fk_usuario_lista foreign key(id_usuario) references usuario(id_usuario)
+);
+
+create table pelicula_lista(
+    id_lista int not null,
+    id_pelicula int not null,
+    numero_orden int null,
+    constraint fk_lista_pelicula foreign key(id_lista) references lista_usuario(id_lista),
+    constraint pk_pelicula_lista primary key(id_lista, id_pelicula)
+);
