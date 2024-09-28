@@ -112,3 +112,13 @@ create table lenguaje_pelicula(
     constraint fk_lenguaje_pelicula foreign key(id_lenguaje) references pelicula(id_lenguaje),
     constraint pk_genero_pelicula primary key(id_pelicula, id_lenguaje)
 );
+
+create table involucrado_pelicula(
+    id_artista int not null,
+    id_rol int not null,
+    id_pelicula not null,
+    constraint fk_artista_involucrado foreign key(id_artista) references artista(id_artista),
+    constraint fk_rol_involucrado foreign key(id_rol) references rol_artista(id_rol),
+    constraint fk_pelicula_involucrado foreign key(id_pelicula) references pelicula(id_pelicula),
+    constraint pk_involucrados_pelicula primary key(id_artista, id_rol, id_pelicula)
+);
