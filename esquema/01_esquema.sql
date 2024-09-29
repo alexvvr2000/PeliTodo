@@ -25,10 +25,11 @@ create table usuario(
 );
 
 create table plataforma_cuenta_externa(
-    id_plataforma int primary key auto_increment,
+    id_plataforma int not null auto_increment,
     nombre varchar(50) not null,
     url varchar(2000) not null,
-    url_icono varchar(2000) not null
+    url_icono varchar(2000) not null,
+    constraint pk_plataforma_cuenta_externa primary key(id_plataforma)
 );
 
 create table cuenta_externa_usuario(
@@ -41,53 +42,60 @@ create table cuenta_externa_usuario(
 );
 
 create table estudio(
-    id_estudio int primary key auto_increment,
+    id_estudio int not null auto_increment,
     nombre varchar(50) not null,
     pagina_oficial varchar(2000) null,
     id_pais char(2) null,
     fecha_fundacion date null,
-    fecha_cierre date null
+    fecha_cierre date null,
+    constraint pk_estudio primary key(id_estudio)
 );
 
 create table genero(
-    id_genero int primary key auto_increment,
+    id_genero int not null auto_increment,
     descripcion varchar(50) not null,
+    constraint pk_genero primary key(id_genero)
 );
 
 create table rol_artista(
-    id_rol int primary key auto_increment,
+    id_rol int not null auto_increment,
     descripcion varchar(50) not null,
+    constraint pk_rol_artista primary key(id_rol)
 );
 
 create table artista(
-    id_artista int primary key auto_increment,
+    id_artista int not null auto_increment,
     nombre varchar(50) not null,
     apellidos varchar(100) not null,
     edad int not null,
     fecha_nacimiento date null,
-    fecha_deceso not null,
+    fecha_deceso date null,
+    constraint pk_artista primary key(id_artista)
 );
 
 create table plataforma(
-    id_plataforma int primary key auto_increment,
+    id_plataforma int not null auto_increment,
     nombre varchar(50) not null,
     url varchar(2000) not null,
+    constraint pk_plataforma primary key(id_plataforma)
 );
 
 create table pelicula(
-    id_pelicula int primary key auto_increment,
+    id_pelicula int not null auto_increment,
     fecha_estreno date not null,
     id_pais char(2) null,
     duracion int not null,
-    constraint fk_pais_pelicula foreign key(id_pais) references pais(id_pais)
-)
+    constraint fk_pais_pelicula foreign key(id_pais) references pais(id_pais),
+    constraint pk_pelicula primary key(id_pelicula)
+);
 
 create table imagen_pelicula(
-    id_imagen_pelicula int primary key auto_increment,
+    id_imagen_pelicula int not null auto_increment,
     id_pelicula int not null,
     url_imagen varchar(2000) not null,
     descripcion varchar(50) not null,
-    constraint fk_pelicula_imagen foreign key(id_pelicula) references pelicula(id_pelicula)
+    constraint fk_pelicula_imagen foreign key(id_pelicula) references pelicula(id_pelicula),
+    constraint pk_imagen_pelicula primary key(id_imagen_pelicula)
 );
 
 create table genero_pelicula(
@@ -110,14 +118,14 @@ create table lenguaje_pelicula(
     id_pelicula int not null,
     id_lenguaje char(2) not null,
     constraint fk_pelicula_lenguaje foreign key(id_pelicula) references pelicula(id_pelicula),
-    constraint fk_lenguaje_pelicula foreign key(id_lenguaje) references pelicula(id_lenguaje),
+    constraint fk_lenguaje_pelicula foreign key(id_lenguaje) references lenguaje(id_lenguaje),
     constraint pk_genero_pelicula primary key(id_pelicula, id_lenguaje)
 );
 
 create table involucrado_pelicula(
     id_artista int not null,
     id_rol int not null,
-    id_pelicula not null,
+    id_pelicula int not null,
     constraint fk_artista_involucrado foreign key(id_artista) references artista(id_artista),
     constraint fk_rol_involucrado foreign key(id_rol) references rol_artista(id_rol),
     constraint fk_pelicula_involucrado foreign key(id_pelicula) references pelicula(id_pelicula),
@@ -130,7 +138,7 @@ create table estudio_pelicula(
     constraint fk_estudio_pelicula foreign key(id_estudio) references estudio(id_estudio),
     constraint fk_pelicula_estudio foreign key(id_pelicula) references pelicula(id_pelicula),
     constraint pk_estudio_pelicula primary key(id_estudio, id_pelicula)
-)
+);
 
 create table titulo_pelicula(
     id_pelicula int not null,
@@ -142,10 +150,11 @@ create table titulo_pelicula(
 );
 
 create table lista_usuario(
-    id_lista int primary key auto_increment,
+    id_lista int not null auto_increment,
     id_usuario int not null,
     nombre_lista varchar(100) not null,
-    constraint fk_usuario_lista foreign key(id_usuario) references usuario(id_usuario)
+    constraint fk_usuario_lista foreign key(id_usuario) references usuario(id_usuario),
+    constraint pk_lista_usuario primary key(id_lista)
 );
 
 create table pelicula_lista(
