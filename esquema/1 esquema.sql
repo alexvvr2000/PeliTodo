@@ -1,5 +1,3 @@
-use pelitodo;
-
 create table lenguaje(
     id_lenguaje char(2) primary key,
     nombre varchar(30) not null
@@ -7,12 +5,12 @@ create table lenguaje(
 
 create table pais(
     id_pais char(2) primary key,
-    codigo_alfa_3 char(3),
-    descripcion varchar(30)
+    codigo_alfa_3 char(3) not null,
+    descripcion varchar(30) not null
 );
 
 create table usuario(
-    id_usuario int primary key autoincrement,
+    id_usuario int primary key auto_increment,
     correo_electronico varchar(254) not null,
     nombre_usuario varchar(50) not null,
     salt_clave char(64) not null,
@@ -24,7 +22,7 @@ create table usuario(
 )
 
 create table plataforma_cuenta_externa(
-    id_plataforma int primary key autoincrement,
+    id_plataforma int primary key auto_increment,
     nombre varchar(50) not null,
     url varchar(2000) not null,
     url_icono varchar(2000) not null
@@ -40,7 +38,7 @@ create table cuenta_externa_usuario(
 );
 
 create table estudio(
-    id_estudio int primary key autoincrement,
+    id_estudio int primary key auto_increment,
     nombre varchar(50) not null,
     pagina_oficial varchar(2000) null,
     id_pais char(2) null,
@@ -49,17 +47,17 @@ create table estudio(
 );
 
 create table genero(
-    id_genero int primary key autoincrement,
+    id_genero int primary key auto_increment,
     descripcion varchar(50) not null,
 );
 
 create table rol_artista(
-    id_rol int primary key autoincrement,
+    id_rol int primary key auto_increment,
     descripcion varchar(50) not null,
 );
 
 create table artista(
-    id_artista int primary key autoincrement,
+    id_artista int primary key auto_increment,
     nombre varchar(50) not null,
     apellidos varchar(100) not null,
     edad int not null,
@@ -68,13 +66,13 @@ create table artista(
 );
 
 create table plataforma(
-    id_plataforma int primary key autoincrement,
+    id_plataforma int primary key auto_increment,
     nombre varchar(50) not null,
     url varchar(2000) not null,
 );
 
 create table pelicula(
-    id_pelicula int primary key autoincrement,
+    id_pelicula int primary key auto_increment,
     fecha_estreno date not null,
     id_pais char(2) null,
     duracion int not null,
@@ -82,7 +80,7 @@ create table pelicula(
 )
 
 create table imagen_pelicula(
-    id_imagen_pelicula int primary key autoincrement,
+    id_imagen_pelicula int primary key auto_increment,
     id_pelicula int not null,
     url_imagen varchar(2000) not null,
     descripcion varchar(50) not null,
@@ -141,7 +139,7 @@ create table titulo_pelicula(
 );
 
 create table lista_usuario(
-    id_lista int primary key autoincrement,
+    id_lista int primary key auto_increment,
     id_usuario int not null,
     nombre_lista varchar(100) not null,
     constraint fk_usuario_lista foreign key(id_usuario) references usuario(id_usuario)
