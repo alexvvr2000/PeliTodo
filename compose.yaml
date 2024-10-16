@@ -1,6 +1,7 @@
 services:
   database:
     build:
+      context: .
       dockerfile: Dockerfile
     environment:
       - MYSQL_ROOT_PASSWORD_FILE=/run/secrets/root
