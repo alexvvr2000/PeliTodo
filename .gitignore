@@ -1,3 +1,5 @@
 mysql_data/*
 pass.txt
 root.txt
+esquema/inserts/*
+esquema/datos/*
