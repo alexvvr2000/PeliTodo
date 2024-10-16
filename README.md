@@ -4,17 +4,21 @@ En esta base de datos se trata de copiar, con cierto grado de error, un esquema 
 
 Para el esquema se usa MySQL y dentro de las tecnologías para la creación de las instrucciones que llenan la base de datos se usan las siguientes tecnologías:
 
+## Librerias
 * [httpx](https://www.python-httpx.org/)
 * [trio](https://trio.readthedocs.io/en/stable/)
 * [aiofiles](https://github.com/Tinche/aiofiles)
-* [TMDB](https://developer.themoviedb.org/docs/getting-started)
 * [faker](https://faker.readthedocs.io/en/stable/)
 * [lxml](https://lxml.de/)
+
+## API
+* [TMDB](https://developer.themoviedb.org/docs/getting-started)
+* [WikiMedia](https://api.wikimedia.org/wiki/Main_Page)
 
 # Datos de prueba
 Antes de levantar el servidor, debes llenar el archivo usuarios.json con un arreglo de id's de peliculas de TMDB para llenar la base de datos con datos para poder extraer reviews y los datos de peliculas.
 
-Ejemplo de archivo usuarios.json válido:
+Ejemplo de archivo peliculas.json válido:
 
 ```json
 {
@@ -27,6 +31,8 @@ Ejemplo de archivo usuarios.json válido:
 ```
 
 Si no se detecta un archivo válido antes de la ejecución de extracción de datos, se mostrará una excepción y no se podrá continuar con la creación del contenedor en Docker.
+
+La ubicacion de este archivo peliculas.json debe ir dentro de la carpeta /esquema/datos/.
 
 Todas los datos creados serán creados en archivos SQL en la carpeta /esquema/inserts/.
 
@@ -51,8 +57,4 @@ Para usar la base de datos, es tan simple como usar el comando
 docker compose up
 ```
 
-En el directorio donde se clona este repositorio y esperar a que todos los datos sean generados.
-
-# Tablas de idiomas y lenguajes
-
-Las tablas de donde se parsean los datos de los [idiomas](https://en.wikipedia.org/wiki/List_of_ISO_639_language_codes) y [paises](https://en.wikipedia.org/wiki/List_of_ISO_3166_country_codes) son provistas por [Wikipedia](https://www.wikipedia.org/), y yo mismo copié las tablas html a los archivos txt incluidos en la carpeta /esquema/datos.
+En el directorio donde se clona este repositorio, ya con tu archivo peliculas.json dentro de s, y esperar a que todos los datos sean generados.
