@@ -21,6 +21,8 @@ secrets:
     file: ./root.txt
   usuario:
     file: ./pass.txt
+  salt:
+    file: ./salt.txt
 
 volumes:
   pelitodo_data:
