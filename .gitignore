@@ -1,5 +1,6 @@
 mysql_data/*
 pass.txt
 root.txt
+salt.txt
 esquema/inserts/*
 esquema/datos/*
