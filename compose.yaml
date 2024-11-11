@@ -1,8 +1,24 @@
 services:
+  datos:
+    build:
+      context: ./esquema/
+      dockerfile: Dockerfile
+    env_file: 
+      - path: ./.env
+        required: true
+    volumes:
+      - datos_insert:/output/
+    secrets:
+      - wikimedia
+      - tmdb
+
   database:
     build:
       context: .
       dockerfile: Dockerfile
+    depends_on:
+      datos: 
+        condition: service_completed_successfully
     environment:
       - MYSQL_ROOT_PASSWORD_FILE=/run/secrets/root
       - MYSQL_USER=admin_pelitodo
@@ -35,3 +51,9 @@ volumes:
       type: none
       o: bind
       device: ./mysql_data
+  datos_insert:
+    driver: local
+    driver_opts:
+      type: none
+      o: bind
+      device: ./esquema/inserts
