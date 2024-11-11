@@ -2,6 +2,12 @@ from dataclasses import dataclass
 from pathlib import Path
 
 from dataclass_wizard import JSONWizard
+from dataclass_wizard.wizard_mixins import JSONFileWizard
+
+
+@dataclass
+class ArchivoPeliculas(JSONWizard, JSONFileWizard):
+    peliculas: list[str]
 
 
 def get_docker_secret(secreto: str, default: str = "") -> str:
@@ -14,9 +20,5 @@ def get_docker_secret(secreto: str, default: str = "") -> str:
     return valor_secreto
 
 
-ARCHIVO_DATOS = Path("../datos/peliculas.json")
-
-
-@dataclass
-class ArchivoPeliculas(JSONWizard):
-    peliculas: list[str]
+PATH_ARCHIVO_DATOS = Path("/datos/peliculas.json")
+peliculas_introducidas = ArchivoPeliculas.from_json_file(str(PATH_ARCHIVO_DATOS))
