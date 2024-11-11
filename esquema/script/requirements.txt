@@ -4,5 +4,3 @@ aiofiles
 Faker
 dataclass-wizard
 lxml
-mypy
-black
