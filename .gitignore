@@ -1,6 +1,6 @@
 # Folders de datos externos
-esquema/inserts/*
 esquema/datos/*
+esquema/tablas/*g.sql
 
 # Datos SQL
 mysql_data/*
@@ -10,7 +10,6 @@ pass.txt
 root.txt
 salt.txt
 tmdb.txt
-wikimedia.txt
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
