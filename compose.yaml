@@ -7,15 +7,18 @@ services:
       - path: ./.env
         required: true
     volumes:
-      - datos_insert:/output/
+      - datos_insert:/output
     secrets:
-      - wikimedia
       - tmdb
+    command: >
+      sh -c 'if [ "$(ls /output | grep -E "g.sql" | wc -l)" -ne 0 ]; then
+          echo "Archivos de prueba ya generados, saltando la creación";
+       else
+          python /datos/creacion_insert.py;
+       fi'
 
   database:
-    build:
-      context: .
-      dockerfile: Dockerfile
+    image: mysql:8.0.39-debian
     depends_on:
       datos: 
         condition: service_completed_successfully
@@ -28,6 +31,7 @@ services:
       - '127.0.0.1:3306:3306'
     volumes:
       - pelitodo_data:/var/lib/mysql
+      - datos_insert:/docker-entrypoint-initdb.d
     secrets:
       - root
       - usuario
@@ -39,8 +43,6 @@ secrets:
     file: ./pass.txt
   salt:
     file: ./salt.txt
-  wikimedia:
-    file: ./wikimedia.txt
   tmdb:
     file: ./tmdb.txt
 
@@ -56,4 +58,4 @@ volumes:
     driver_opts:
       type: none
       o: bind
-      device: ./esquema/inserts
+      device: ./esquema/tablas
