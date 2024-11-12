@@ -9,6 +9,7 @@ Para el esquema se usa MySQL y dentro de las tecnologías para la creación de l
 * [aiofiles](https://github.com/Tinche/aiofiles)
 * [faker](https://faker.readthedocs.io/en/stable/)
 * [lxml](https://lxml.de/)
+* [cssselector](https://cssselect.readthedocs.io/en/latest/)
 
 ## API
 * [TMDB](https://developer.themoviedb.org/docs/getting-started)
