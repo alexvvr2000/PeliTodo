@@ -6,7 +6,6 @@ Para el esquema se usa MySQL y dentro de las tecnologías para la creación de l
 
 ## Librerias
 * [httpx](https://www.python-httpx.org/)
-* [trio](https://trio.readthedocs.io/en/stable/)
 * [aiofiles](https://github.com/Tinche/aiofiles)
 * [faker](https://faker.readthedocs.io/en/stable/)
 * [lxml](https://lxml.de/)

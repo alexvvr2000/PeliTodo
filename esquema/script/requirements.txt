@@ -1,6 +1,6 @@
 httpx
-trio
 aiofiles
 Faker
 dataclass-wizard
 lxml
+cssselect
