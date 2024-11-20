@@ -1,6 +1,6 @@
 create table usuario(
     id_usuario int not null auto_increment,
-    correo_electronico varchar(254) not null,
+    correo_electronico varchar(254) not null unique,
     nombre_usuario varchar(50) not null,
     clave_acceso char(128) not null,
     fecha_creacion datetime not null,
