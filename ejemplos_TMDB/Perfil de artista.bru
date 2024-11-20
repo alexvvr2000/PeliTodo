@@ -1,0 +1,15 @@
+meta {
+  name: Perfil de artista
+  type: http
+  seq: 10
+}
+
+get {
+  url: https://api.themoviedb.org/3/person/157336
+  body: none
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{ACCESS_TOKEN}}
+}
