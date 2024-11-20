@@ -1,7 +1,6 @@
 create table plataforma(
     id_plataforma int not null auto_increment,
     nombre varchar(50) not null,
-    url varchar(2000) not null,
     constraint pk_plataforma primary key(id_plataforma)
 );
 
