@@ -20,8 +20,6 @@ create table rol_artista(
 create table artista(
     id_artista int not null auto_increment,
     nombre varchar(50) not null,
-    apellidos varchar(100) null,
-    edad int not null,
     fecha_nacimiento date null,
     fecha_deceso date null,
     constraint pk_artista primary key(id_artista)
