@@ -14,7 +14,6 @@ create table plataforma_cuenta_externa(
     id_plataforma int not null auto_increment,
     nombre varchar(50) not null,
     url varchar(2000) not null,
-    url_icono varchar(2000) not null,
     constraint pk_plataforma_cuenta_externa primary key(id_plataforma)
 );
 
