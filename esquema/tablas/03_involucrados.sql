@@ -1,10 +1,7 @@
 create table estudio(
     id_estudio int not null auto_increment,
     nombre varchar(50) not null,
-    pagina_oficial varchar(2000) null,
     id_pais char(2) null,
-    fecha_fundacion date null,
-    fecha_cierre date null,
     constraint pk_estudio primary key(id_estudio)
 );
 
