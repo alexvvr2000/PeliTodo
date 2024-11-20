@@ -1,0 +1,15 @@
+meta {
+  name: Actores involucrados
+  type: http
+  seq: 7
+}
+
+get {
+  url: https://api.themoviedb.org/3/movie/157336/credits
+  body: none
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{ACCESS_TOKEN}}
+}

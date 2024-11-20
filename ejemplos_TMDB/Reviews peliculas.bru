@@ -1,0 +1,15 @@
+meta {
+  name: Reviews peliculas
+  type: http
+  seq: 9
+}
+
+get {
+  url: https://api.themoviedb.org/3/movie/157336/reviews
+  body: none
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{ACCESS_TOKEN}}
+}

@@ -1,0 +1,15 @@
+meta {
+  name: Plataformas de streaming de una pelicula
+  type: http
+  seq: 6
+}
+
+get {
+  url: https://api.themoviedb.org/3/movie/157336/watch/providers
+  body: none
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{ACCESS_TOKEN}}
+}

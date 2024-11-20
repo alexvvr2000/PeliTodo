@@ -1,0 +1,15 @@
+meta {
+  name: Traducciones de titulo de pelicula
+  type: http
+  seq: 8
+}
+
+get {
+  url: https://api.themoviedb.org/3/movie/157336/translations
+  body: none
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{ACCESS_TOKEN}}
+}

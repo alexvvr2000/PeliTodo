@@ -1,0 +1,19 @@
+meta {
+  name: Imagenes pelicula
+  type: http
+  seq: 3
+}
+
+get {
+  url: https://api.themoviedb.org/3/movie/157336/images
+  body: none
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{ACCESS_TOKEN}}
+}
+
+docs {
+  Obteniendo todas las imagenes relacionadas con una pelicula
+}

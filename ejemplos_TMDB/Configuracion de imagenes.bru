@@ -1,0 +1,19 @@
+meta {
+  name: Configuracion de imagenes
+  type: http
+  seq: 4
+}
+
+get {
+  url: https://api.themoviedb.org/3/configuration
+  body: none
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{ACCESS_TOKEN}}
+}
+
+docs {
+  Muestra todos los componentes que puedes usar para armar una url para obtener una imagen
+}
