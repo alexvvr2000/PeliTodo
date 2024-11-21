@@ -1,6 +1,6 @@
 # Folders de datos externos
 esquema/datos/*
-esquema/tablas/*g.sql
+esquema/tablas/*.b*.sql
 
 # Datos SQL
 mysql_data/*

@@ -1,21 +1,17 @@
 services:
   datos:
     build:
-      context: ./esquema/
+      context: ./esquema
       dockerfile: Dockerfile
     env_file: 
       - path: ./.env
         required: true
     volumes:
-      - datos_insert:/output
+      - ./esquema/tablas:/output
     secrets:
+      - root
       - tmdb
-    command: >
-      sh -c 'if [ "$(ls /output | grep -E "g.sql" | wc -l)" -ne 0 ]; then
-          echo "Archivos de prueba ya generados, saltando la creación";
-       else
-          python /datos/creacion_insert.py;
-       fi'
+    command: ["python","/script/entrypoint.py"]
 
   database:
     image: mysql:8.0.39-debian
@@ -30,32 +26,18 @@ services:
     ports:
       - '127.0.0.1:3306:3306'
     volumes:
-      - pelitodo_data:/var/lib/mysql
-      - datos_insert:/docker-entrypoint-initdb.d
+      - ./mysql_data:/var/lib/mysql
+      - ./esquema/tablas:/docker-entrypoint-initdb.d
     secrets:
       - root
       - usuario
 
 secrets:
   root:
-    file: ./root.txt
+    file: root.txt
   usuario:
-    file: ./pass.txt
+    file: pass.txt
   salt:
-    file: ./salt.txt
+    file: salt.txt
   tmdb:
-    file: ./tmdb.txt
-
-volumes:
-  pelitodo_data:
-    driver: local
-    driver_opts:
-      type: none
-      o: bind
-      device: ./mysql_data
-  datos_insert:
-    driver: local
-    driver_opts:
-      type: none
-      o: bind
-      device: ./esquema/tablas
+    file: tmdb.txt
