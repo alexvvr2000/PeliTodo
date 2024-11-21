@@ -1,6 +1,0 @@
-httpx
-aiofiles
-Faker
-dataclass-wizard
-lxml
-cssselect
